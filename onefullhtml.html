@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background-color: rgb(255, 255, 255);
+            height: 85px;
+            float: left;
+
+        }
+
+        .sign {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            background: transparent;
+            padding-top: 15px;
+            padding-right: 15px;
+        }
+
+        .Sign_Up {
+
+            height: 70px;
+            width: 170px;
+            background: linear-gradient(135deg, #ffffff, #ffffff);
+            border: 2px solid black;
+            border-radius: 12px;
+            font-size: 23px;
+            margin-left: 76vw;
+            margin-top: -50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+
+
+
+
+        .Sign_Up:hover {
+            background: linear-gradient(135deg, #000000, #444444);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .Sign_Up:active {
+            transform: scale(0.97);
+
+        }
+
+        .h1 {
+            margin-top: 15%;
+            margin-left: 3%;
+            font-size: 60px;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .battory {
+            width: 34%;
+            height: 42vh;
+            border-radius: 30px;
+            margin-left: 3%;
+            background-color: rgb(223, 248, 185);
+
+            justify-content: center;
+            align-items: end;
+            display: flex;
+        }
+
+        .img {
+            height: 30vh;
+            margin-left: 42.5%;
+            margin-top: -70%;
+            border-radius: 30px;
+        }
+
+        .cells {
+
+            width: 120px;
+            background-color: white;
+            height: auto;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            /* Added padding for better spacing */
+        }
+
+        .cell-1,
+        .cell-2,
+        .cell-3,
+        .cell-4,
+        .cell-5,
+        .cell-6,
+        .cell-7,
+        .cell-8,
+        .cell-9,
+        .cell-10 {
+            height: 10px;
+            width: 70px;
+            margin: 10px auto;
+            /* Centers each cell horizontally */
+            border-radius: 10px;
+            background-color: rgb(223, 248, 185);
+            display: block;
+            /* Ensures block-level behavior */
+        }
+
+        .cell-1,
+        .cell-2,
+        .cell-3,
+        .cell-4,
+        .cell-5,
+        .cell-6,
+        .cell-7,
+        .cell-8,
+        .cell-9,
+        .cell-10 {
+            height: 10px;
+            width: 70px;
+            margin-top: 10px;
+            border-radius: 10px;
+            background-color: rgb(223, 248, 185);
+
+        }
+
+        .battory-persent {
+            font-size: 40px;
+            font-weight: 600;
+            color: #1d1d1d;
+            font-family: "Boldonse", system-ui;
+            position: absolute;
+            align-self: baseline;
+            margin-top: 30px;
+        }
+
+        .watch {
+            height: 28vh;
+            width: 110vw;
+            margin-left: 85px;
+            align-self: center;
+            margin-top: 20px;
+            justify-self: center;
+            border-radius: 20px;
+            align-items: end;
+            display: flex;
+            background-color: rgba(203, 249, 250, 0.822);
+
+        }
+
+        .watch-img {
+            height: 90%;
+
+            align-self: flex-end;
+
+
+        }
+
+        .watch-text {
+            font-family: "Montserrat", sans-serif;
+            color: #171717;
+            font-size: 30px;
+            font-weight: 100;
+            align-self: baseline;
+            margin-top: 60px;
+        }
+
+        .slide-wrapper {
+            display: inline-block;
+            border-radius: 40px;
+            width: 100%;
+        }
+
+        .slider {
+            position: relative;
+            width: 10%;
+
+            /* default width */
+
+            border-radius: 40px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            background: #fde68a;
+            border-radius: 40px;
+            /* always yellow */
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            user-select: none;
+            margin: auto;
+            height: 90px;
+            margin-left: 10%;
+            margin-top: 20px;
+        }
+
+        /* On small screens -> full width */
+        @media (max-width: 600px) {
+            .slider {
+                width: 100vw;
+                border-radius: 40px;
+                /* Changed to match main border-radius */
+            }
+        }
+
+        .slider-text {
+            position: absolute;
+            font-weight: 600;
+            font-size: 18px;
+            color: #111;
+            pointer-events: none;
+            display: flex;
+            gap: 6px;
+        }
+
+        .slide-btn {
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 80px;
+            border-radius: 40px;
+            /* Changed to match main border-radius */
+            background: #f5f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            cursor: grab;
+            transition: left .18s ease;
+            touch-action: none;
+        }
+
+        .slide-btn img {
+            width: 26px;
+            height: 26px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="sign">
+            <button class="Sign_Up">Sign Up</button>
+        </div>
+    </header>
+    <h1 class="h1">Tracking <br> Your Health</h1>
+
+    <div class="battory">
+        <div class="battory-persent">100%</div>
+        <div class="cells">
+            <div class="cell-1"></div>
+            <div class="cell-2"></div>
+            <div class="cell-3"></div>
+            <div class="cell-4"></div>
+            <div class="cell-5"></div>
+            <div class="cell-6"></div>
+            <div class="cell-7"></div>
+            <div class="cell-8"></div>
+            <div class="cell-9"></div>
+            <div class="cell-10"></div>
+        </div>
+    </div>
+    <img src="img.jpg" alt="" class="img">
+    <div class="watch">
+        <img src="watch.png" alt="" class="watch-img">
+        <h3 class="watch-text">Connect you watch <br> ‎ ‎ ‎ ‎ to get started</h3>
+    </div>
+    <div class="slide-wrapper">
+        <div class="slider" id="slider">
+            <div class="slider-text" id="slider-text">Connect <span>>></span></div>
+            <div class="slide-btn" id="slide-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                    stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Watch body -->
+                    <rect x="7" y="4" width="10" height="16" rx="2" ry="2" fill="none"></rect>
+                    <!-- Watch straps -->
+                    <path d="M9 4V2h6v2"></path>
+                    <path d="M9 20v2h6v-2"></path>
+                </svg>
+
+
+            </div>
+        </div>
+    </div>
+    <script>
+
+        const slider = document.getElementById("slider");
+        const slideBtn = document.getElementById("slide-btn");
+        const sliderText = document.getElementById("slider-text");
+
+        let isDragging = false;
+        let startX, btnX;
+
+        function maxLeft() {
+            return slider.clientWidth - slideBtn.clientWidth - 5;
+        }
+
+        function setConnected() {
+            sliderText.textContent = "Connected ✅";
+        }
+
+        // Mouse
+        slideBtn.addEventListener("mousedown", e => {
+            if (sliderText.textContent.includes("Connected")) return;
+            isDragging = true;
+            startX = e.clientX;
+            btnX = slideBtn.offsetLeft;
+            slideBtn.style.transition = "none";
+        });
+
+        document.addEventListener("mousemove", e => {
+            if (!isDragging) return;
+            let moveX = e.clientX - startX;
+            let newX = btnX + moveX;
+            if (newX < 5) newX = 5;
+            if (newX > maxLeft()) newX = maxLeft();
+            slideBtn.style.left = newX + "px";
+        });
+
+        document.addEventListener("mouseup", () => {
+            if (!isDragging) return;
+            isDragging = false;
+            slideBtn.style.transition = "left .18s ease";
+            if (slideBtn.offsetLeft >= maxLeft() - 5) {
+                slideBtn.style.left = maxLeft() + "px";
+                setConnected();
+            } else {
+                slideBtn.style.left = "5px";
+            }
+        });
+
+        // Touch
+        slideBtn.addEventListener("touchstart", e => {
+            if (sliderText.textContent.includes("Connected")) return;
+            isDragging = true;
+            startX = e.touches[0].clientX;
+            btnX = slideBtn.offsetLeft;
+            slideBtn.style.transition = "none";
+        }, { passive: true });
+
+        document.addEventListener("touchmove", e => {
+            if (!isDragging) return;
+            let moveX = e.touches[0].clientX - startX;
+            let newX = btnX + moveX;
+            if (newX < 5) newX = 5;
+            if (newX > maxLeft()) newX = maxLeft();
+            slideBtn.style.left = newX + "px";
+        }, { passive: true });
+
+        document.addEventListener("touchend", () => {
+            if (!isDragging) return;
+            isDragging = false;
+            slideBtn.style.transition = "left .18s ease";
+            if (slideBtn.offsetLeft >= maxLeft() - 5) {
+                slideBtn.style.left = maxLeft() + "px";
+                setConnected();
+            } else {
+                slideBtn.style.left = "5px";
+            }
+        });
+
+    </script>
+</body>
+
+</html>
